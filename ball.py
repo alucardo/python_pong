@@ -8,8 +8,18 @@ class Ball(Turtle):
         self.penup()
         self.color('blue')
         self.shape('circle')
+        self.x_move = 10
+        self.y_move = 10
 
     def move(self):
-        new_x = self.xcor() + 10
-        new_y = self.ycor() + 10
+        if self.wall_collision():
+            self.bounce()
+        new_x = self.xcor() + self.x_move
+        new_y = self.ycor() + self.y_move
         self.goto(new_x, new_y)
+
+    def wall_collision(self):
+        return self.ycor() > 280 or self.ycor() < -280
+
+    def bounce(self):
+        self.y_move *= -1
