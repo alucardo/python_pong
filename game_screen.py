@@ -1,4 +1,5 @@
 from turtle import Screen
+import time
 
 class GameScreen():
 
@@ -14,6 +15,7 @@ class GameScreen():
         self.screen.exitonclick()
 
     def update_screen(self):
+        time.sleep(0.1)
         self.screen.update()
 
     def on_key_press(self, action, key):
